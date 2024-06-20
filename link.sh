@@ -19,10 +19,15 @@ stowArgs=(
       "--adopt"
 )
 
+# Create the directories
+mkdir -p ~/.config
+mkdir -p ~/.local/bin
+mkdir -p ~/.oh-my-zsh
+
 # Handle packs in the ~ dir
 stow                        \
   -d ~/.dotfiles            \
-  -t ~/                     \
+  -t ~                      \
   ${stowArgs[@]}            \
   -S root
 
@@ -38,3 +43,16 @@ stow                        \
   -t ~/.config              \
   ${stowArgs[@]}            \
   -S dot-config
+
+# Make the scripts executable
+for i in ~/.dotfiles/scripts/*.sh; do
+  [ -f "$i" ] || break
+  chmod +x $i
+done
+
+# Stow the scripts
+stow                        \
+  -d ~/.dotfiles            \
+  -t ~/.local/bin           \
+  ${stowArgs[@]}            \
+  -S scripts

@@ -1,4 +1,4 @@
-# Clone my dwm and slstatus repos into my code directory
+#!/bin/bash
 
 IMG="/usr/share/pixmaps/default-background.jpg"
 
@@ -15,6 +15,7 @@ pacman -Sy --noconfirm xorg-server xorg-apps libx11                 \
               ttf-roboto-mono-nerd ttf-font-awesome dmenu playerctl \
               picom feh xss-lock firefox i3lock pulseaudio curl
 
+# Clone my dwm and slstatus repos into my code directory
 if test -d $DWM_DIR; then
     echo "dwm is already installed in $DWM_DIR."
 else
@@ -37,6 +38,20 @@ else
 fi
 
 if test ! -f $IMG; then
-  echo "Downloading my current background."
+  echo "Downloading a background I like to the hardcoded path I have in dwm."
   curl https://image4.uhdpaper.com/wallpaper/night-sky-stars-mountain-scenery-milky-way-uhdpaper.com-4K-4.751.jpg > $IMG
+fi
+
+entryStr="\
+[Desktop Entry]
+Encoding=UTF-8
+Name=dwm
+Comment=Dynamic window manager
+Exec=dwm
+Icon=dwm
+Type=XSession"
+
+if test ! -f /usr/share/xsessions/dwm.desktop; then
+  echo "Creating dwm.desktop file."
+  echo $entryStr > /usr/share/xsessions/dwm.desktop
 fi

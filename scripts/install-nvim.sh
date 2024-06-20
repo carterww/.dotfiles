@@ -1,6 +1,6 @@
-localShare="${XDG_DATA_HOME:-$HOME/.local/share}"
+#!/bin/bash
 
-echo "Installing paq-nvim"
+localShare="${XDG_DATA_HOME:-$HOME/.local/share}"
 
 echo "Installing dependencies using pacman"
 pacman -Sy --noconfirm neovim git tree-sitter-cli xclip
@@ -10,6 +10,7 @@ if test -d $localShare/nvim/site/pack/paqs/start/paq-nvim; then
     exit 0
 fi
 
+echo "Installing paq-nvim"
 # Clone paq
 git clone --depth=1 https://github.com/savq/paq-nvim.git \
      $localShare/nvim/site/pack/paqs/start/paq-nvim
