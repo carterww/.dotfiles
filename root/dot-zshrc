@@ -117,4 +117,7 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 export PICO_SDK_PATH="/home/carter/code/sys/pico-sdk"
-PATH="$PATH:~/.local/bin"
+eval "$(zoxide init --cmd cd zsh)"
+
+# Sudo alias which preserves env
+alias sudoe='sudo -E -s'
