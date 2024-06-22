@@ -20,7 +20,7 @@ echo "Installing dependencies using pacman"
 # I think these are all but I could be missing some
 # This includes EVERYTHING dwm uses that is hardcoded
 pacman -Sy --noconfirm xorg-server xorg-apps libx11                 \
-              ttf-roboto-mono-nerd ttf-font-awesome dmenu playerctl \
+              ttf-roboto-mono-nerd ttf-font-awesome playerctl \
               picom feh xss-lock pulseaudio curl
 
 if test -d $REPO_PATH; then
