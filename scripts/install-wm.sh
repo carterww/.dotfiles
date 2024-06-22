@@ -13,6 +13,9 @@ SLSTATUS_REPO="https://github.com/carterww/slstatus.git"
 SLOCK_DIR="$REPO_PATH/slock"
 SLOCK_REPO="https://github.com/carterww/slock.git"
 
+DMENU_DIR="$REPO_PATH/dmenu"
+DMENU_REPO="https://github.com/carterww/dmenu.git"
+
 echo "Installing dependencies using pacman"
 # I think these are all but I could be missing some
 # This includes EVERYTHING dwm uses that is hardcoded
@@ -45,11 +48,18 @@ else
     git clone --depth=1 $SLOCK_REPO $SLOCK_DIR
 fi
 
+if test -d $DMENU_DIR; then
+    echo "dmenu is already installed in $DMENU_DIR."
+else
+    git clone --depth=1 $DMENU_REPO $DMENU_DIR
+fi
+
 echo "Compiling and installing dwm and slstatus."
 if [[ $1 == *"i"* ]]; then
     make -C $DWM_DIR clean install
     make -C $SLSTATUS_DIR clean install
     make -C $SLOCK_DIR clean install
+    make -C $DMENU_DIR clean install
 else
   echo "Not installing dwm, slstatus, or slock. Run 'make install' as root for each."
   echo "REMINDER: Be sure to define LAPTOP_BUILD in config.h if it's for my laptop."
