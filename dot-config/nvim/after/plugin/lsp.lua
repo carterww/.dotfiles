@@ -15,9 +15,10 @@ lsp.ensure_installed({
   'cssls',
   'clangd',
   'pylsp',
+  'zls'
 })
 
-lsp.setup_servers({'tsserver', 'eslint', 'html', 'jsonls', 'lua_ls', 'gopls', 'angularls', 'cssls', 'clangd', 'pylsp'})
+lsp.setup_servers({'tsserver', 'eslint', 'html', 'jsonls', 'lua_ls', 'gopls', 'angularls', 'cssls', 'clangd', 'pylsp', 'zls'})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}

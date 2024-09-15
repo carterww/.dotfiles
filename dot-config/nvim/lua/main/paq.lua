@@ -10,9 +10,10 @@ require "paq" {
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-    "github/copilot.vim",
+    -- "github/copilot.vim", Trying w/o this for now
 
     "Mofiqul/dracula.nvim",
+    { "rose-pine/neovim", as = "rose-pine" },
 
     {
       'VonHeikemen/lsp-zero.nvim',
