@@ -29,4 +29,6 @@ require "paq" {
     "L3MON4D3/LuaSnip",
 
     "alexghergh/nvim-tmux-navigation",
+
+    "lervag/vimtex"
 }

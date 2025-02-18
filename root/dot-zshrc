@@ -1,16 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# whereis sucks
-alias where='whereis'
-
-# Want a more generic command so i can remember
-alias docx='libreoffice'
-
 #setopt PROMPT_SUBST
 #PROMPT="%n@%m [%t] > "
 
@@ -113,20 +100,40 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# Preferences
+if (command -v nvim >> /dev/null); then
+  export EDITOR=nvim
+elif (command -v vim >> /dev/null); then
+  export EDITOR=vim
+fi
 
-export PICO_SDK_PATH="/home/carter/code/sys/pico-sdk"
-eval "$(zoxide init --cmd cd zsh)"
+if (command -v less >> /dev/null); then
+  export PAGER=less
+fi
 
-# Sudo alias which preserves env
-alias sudoe='sudo -E -s'
+if (command -v firefox >> /dev/null); then
+  export BROWSER=firefox
+fi
+
+if [ -d "/usr/share/fzf" ]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
+
+# zoxide
+(command -v zoxide >> /dev/null) && eval "$(zoxide init --cmd cd zsh)"
 
 # fnm
-FNM_PATH="/home/carter/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
+
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/carter/.local/share/fnm:$PATH"
+  export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
-# zign = zig nightly (stable distro zig is just 'zig')
-alias zign="/home/carter/unmanaged-packages/zig/build/stage3/bin/zig"
+
+# Android Studio
+if [ -d "$HOME/Android" ]; then
+  export CAPACITOR_ANDROID_STUDIO_PATH="/usr/bin/android-studio"
+  export ANDROID_HOME="$HOME/Android/Sdk"
+  export PATH="$ANDROID_HOME/platform-tools:$PATH"
+fi

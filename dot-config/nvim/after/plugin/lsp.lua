@@ -14,11 +14,42 @@ lsp.ensure_installed({
   'angularls',
   'cssls',
   'clangd',
-  'pylsp',
-  'zls'
+  'pyright',
+  'zls',
+  'rust_analyzer',
+  'als',
+  'hls',
+  'ruby_lsp',
+  'tailwindcss',
+  'texlab'
 })
 
-lsp.setup_servers({'tsserver', 'eslint', 'html', 'jsonls', 'lua_ls', 'gopls', 'angularls', 'cssls', 'clangd', 'pylsp', 'zls'})
+lsp.setup_servers({
+  'tsserver',
+  'eslint',
+  'html',
+  'jsonls',
+  'lua_ls',
+  'gopls',
+  'angularls',
+  'cssls',
+  'clangd',
+  'pyright',
+  'zls',
+  'rust_analyzer',
+  'hls',
+  'ruby_lsp',
+  'tailwindcss',
+  'texlab'
+})
+
+require('lspconfig').als.setup({
+  settings = {
+    ada = {
+      projectFile = "project.gpr";
+    }
+  }
+})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
