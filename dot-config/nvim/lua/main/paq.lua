@@ -9,6 +9,7 @@ require "paq" {
     "nvim-lua/plenary.nvim", -- Required for telescope
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    "nvim-treesitter/nvim-treesitter-context",
 
     -- "github/copilot.vim", Trying w/o this for now
 
