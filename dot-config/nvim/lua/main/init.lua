@@ -1,6 +1,10 @@
 require("main.keymap")
 require("main.options")
 require("main.paq")
+require('main.cmp')
+require("main.lsp")
+require("main.diagnostic")
+require("main.color")
 
 -- Set tab length for certain file types --
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -8,6 +12,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.opt.softtabstop = 4
     vim.opt.shiftwidth = 8
+    vim.opt.expandtab = false
   end,
 })
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -15,13 +20,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.opt.softtabstop = 2
     vim.opt.shiftwidth = 2
-  end,
-})
-
--- Automatically format C files on save --
-vim.api.nvim_create_autocmd("BufWrite", {
-  pattern = {"*.c", "*.h"},
-  callback = function()
-    vim.lsp.buf.format()
   end,
 })

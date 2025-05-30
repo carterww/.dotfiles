@@ -19,3 +19,17 @@ vim.keymap.set("n", "<leader>ff", function () vim.lsp.buf.format() end)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("n", "<leader>t", ":vs | :term<CR>")
+
+vim.keymap.set("n", "<C-Up>", ":cnewer<CR>")
+vim.keymap.set("n", "<C-Down>", ":colder<CR>")
+vim.keymap.set("n", "<C-Left>", ":cprev<CR>")
+vim.keymap.set("n", "<C-Right>", ":cnext<CR>")
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'qf',
+  callback = function()
+    vim.keymap.set('n', '<CR>', function()
+      local line = vim.fn.line('.')
+      vim.cmd('cc ' .. line)
+    end, { buffer = true, noremap = true })
+  end,
+})

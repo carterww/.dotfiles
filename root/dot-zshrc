@@ -136,4 +136,11 @@ if [ -d "$HOME/Android" ]; then
   export CAPACITOR_ANDROID_STUDIO_PATH="/usr/bin/android-studio"
   export ANDROID_HOME="$HOME/Android/Sdk"
   export PATH="$ANDROID_HOME/platform-tools:$PATH"
+  export PATH="$ANDROID_HOME/emulator:$PATH"
 fi
+
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+[ -f "/home/carter/.ghcup/env" ] && . "/home/carter/.ghcup/env" # ghcup-env

@@ -65,7 +65,10 @@
           "properties": {
             "fetch_status": true,
             "ignore_status": [
-              "~/code/linux"
+              "*/linux",
+              "*/freebsd-src",
+              "*/threadx",
+              "*/cuda-samples"
             ]
           },
           "style": "plain",
