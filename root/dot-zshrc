@@ -142,5 +142,6 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
-
-[ -f "/home/carter/.ghcup/env" ] && . "/home/carter/.ghcup/env" # ghcup-env
+if [ -d "$HOME/.ghcup" ]; then
+	[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+fi

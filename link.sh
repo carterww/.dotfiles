@@ -14,15 +14,12 @@ fi
 
 stowArgs=(
       "--dotfiles"
-      "--no-folding"
       "-v"
       "--adopt"
 )
 
 # Create the directories
 mkdir -p ~/.config
-mkdir -p ~/.local/bin
-mkdir -p ~/.oh-my-zsh
 
 # Handle packs in the ~ dir
 stow                        \
@@ -30,12 +27,6 @@ stow                        \
   -t ~                      \
   ${stowArgs[@]}            \
   -S root
-
-stow                        \
-  -d ~/.dotfiles            \
-  -t ~/.oh-my-zsh           \
-  ${stowArgs[@]}            \
-  -S dot-oh-my-zsh
 
 # Stow the .config
 stow                        \
@@ -49,10 +40,3 @@ for i in ~/.dotfiles/scripts/*.sh; do
   [ -f "$i" ] || break
   chmod +x $i
 done
-
-# Stow the scripts
-stow                        \
-  -d ~/.dotfiles            \
-  -t ~/.local/bin           \
-  ${stowArgs[@]}            \
-  -S scripts
