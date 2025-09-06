@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+vim.g["mapleader"] = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -33,3 +33,6 @@ vim.api.nvim_create_autocmd('FileType', {
     end, { buffer = true, noremap = true })
   end,
 })
+
+vim.keymap.set('n', 'gd', '<Plug>(wiki-link-follow)', { silent = true })
+vim.keymap.set('n', '<leader>jj', ':WikiJournal<CR>', { silent = true })

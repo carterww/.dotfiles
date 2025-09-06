@@ -8,7 +8,7 @@ require("main.color")
 
 -- Set tab length for certain file types --
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = {"*.c", "*.h", "*.cpp", "*.hpp", "*.cc"},
+  pattern = {"*.c", "*.h", "*.cpp", "*.hpp", "*.cc", "*.odin"},
   callback = function()
     vim.opt.softtabstop = 4
     vim.opt.shiftwidth = 8
@@ -22,3 +22,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.opt.shiftwidth = 2
   end,
 })
+
+-- wiki.vim
+vim.g["wiki_root"] = '~/wiki'
+vim.g["wiki_filetypes"] = { 'md' }
+vim.g["wiki_write_on_nav"] = 1

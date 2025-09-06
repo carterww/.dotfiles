@@ -25,12 +25,13 @@ local lsp_servers = {
     eslint = {},                         -- npm (vscode-langservers-extracted)
     html = {},                           -- npm (vscode-langservers-extracted)
     jsonls = {},                         -- npm (vscode-langservers-extracted)
+    angularls = {},                      -- npm (@angular/language-server)
     lua_ls = require("main.lsp.lua_ls"), -- pacman (lua-language-server)
     pyright = {},                        -- pacman (pyright)
     rust_analyzer = {},                  -- rustup (rust_analyzer)
     texlab = {},                         -- pacman (texlab)
+    gopls = {},                          -- pacman (gopls)
     ts_ls = {},                          -- npm (typescript & typescript-language-server)
-    hls = {},                            -- ghcup
 }
 
 for name, cfg in pairs(lsp_servers) do

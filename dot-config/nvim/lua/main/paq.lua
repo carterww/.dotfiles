@@ -1,6 +1,5 @@
 require "paq" {
     "savq/paq-nvim", -- Let Paq manage itself
-    "theprimeagen/harpoon",
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim", -- Required for telescope
     "alexghergh/nvim-tmux-navigation",
@@ -10,5 +9,6 @@ require "paq" {
     "hrsh7th/cmp-path",
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "nvim-treesitter/nvim-treesitter-context",
-    "neovim/nvim-lspconfig"
+    "neovim/nvim-lspconfig",
+    "lervag/wiki.vim"
 }
